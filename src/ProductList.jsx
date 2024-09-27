@@ -6,9 +6,9 @@ import { addItem, calculateTotalItems } from './CartSlice';
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-    const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
     const totalItems = useSelector((state) => state.cart.totalItems);
+    const addedToCart = useSelector((state) => state.cart.addedToCart);
 
     const plantsArray = [
         {
@@ -259,6 +259,8 @@ const handlePlantsClick = (e) => {
        ...prevState,
        [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
      }));
+
+    
   };
     return (
         <div>
@@ -312,8 +314,9 @@ const handlePlantsClick = (e) => {
                                         <div>{plant.description}</div>
                                         <div className='product-price'>{plant.cost}</div>
                                         <button
-                                            className='product-button'
+                                            className={addedToCart[plant.name] ? 'product-button-disabled' : 'product-button'}
                                             onClick={() => handleAddToCart(plant)}
+                                            disabled={addedToCart[plant.name]}
                                         >
                                             Add To Cart
                                         </button>

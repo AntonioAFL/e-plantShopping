@@ -107,6 +107,16 @@ body {
     margin-top: 10px;
 }
 
+.product-button-disabled {
+    background-color: rgb(187, 186, 186);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: default;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
 .product-button:hover {
     background-color: #c0392b;
 }
